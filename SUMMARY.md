@@ -8,6 +8,7 @@
 + [Ranger](ranger.md)
 + [Rpm](rpm.md)
 + [Sed](sed.md)
++ [SVG](svg.md)
 + [Shell](shell.md)
 + [Web Dev](web-dev/README.md)	
 	+ [Browser Inconsistencies](web-dev/browser-inconsistencies.md)
