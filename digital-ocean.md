@@ -206,6 +206,15 @@ Change `/etc/mongod.conf` line 6 or `bind_ip = 127.0.0.1` to `bind_ip = 0.0.0.0`
 # passwd poopr
 ```
 
+## Setup Redis
+
+Redis does not need any special setup.
+
+```
+# systemctl start redi
+# systemctl start redi
+```
+
 ## Deploying Node Applications with Systemd and Nginx
 
 Digital Ocean has a great guide on deployinig Node applications on their droplets:
