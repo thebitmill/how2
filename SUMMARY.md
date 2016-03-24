@@ -6,6 +6,7 @@
 + [Npm](npm.md)
 + [Pacman](pacman.md)
 + [Ranger](ranger.md)
++ [Regular Expressions](regex.md)
 + [Rpm](rpm.md)
 + [Sed](sed.md)
 + [SVG](svg.md)
