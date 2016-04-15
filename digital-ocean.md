@@ -224,15 +224,15 @@ Digital Ocean has a great guide on deployinig Node applications on their droplet
 
 ```
 [Service]
-ExecStart=/usr/bin/node /home/ams/anderssonmotorsport.nu/server/server.js
-WorkingDirectory=/home/ams/anderssonmotorsport.nu
+ExecStart=/usr/bin/node /home/ams/ams/server/server.js
+WorkingDirectory=/home/ams/ams
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
 SyslogIdentifier=ams
 User=ams
 Group=ams
-Environment=NODE_ENV=production PWD=/home/ams/anderssonmotorsport.nu
+Environment=NODE_ENV=production PWD=/home/ams/ams
 
 [Install]
 WantedBy=multi-user.target
