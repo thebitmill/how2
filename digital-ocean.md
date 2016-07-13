@@ -211,8 +211,8 @@ Change `/etc/mongod.conf` line 6 or `bind_ip = 127.0.0.1` to `bind_ip = 0.0.0.0`
 Redis does not need any special setup.
 
 ```
-# systemctl start redi
-# systemctl start redi
+# systemctl start redis
+# systemctl start redis
 ```
 
 ## Deploying Node Applications with Systemd and Nginx
