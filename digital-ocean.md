@@ -162,11 +162,13 @@ repos to install them. More information can be found at
 <https://github.com/nodesource/distributions>.
 
 ```
+# curl -sL https://rpm.nodesource.com/setup_6.x | bash -
+```
+
+or if you are wimp and want to play it safe:
+
+```
 # curl -sL https://rpm.nodesource.com/setup_4.x | bash -
-```
-or
-```
-# curl -sL https://rpm.nodesource.com/setup_5.x | bash -
 ```
 
 CAUTION: In general it is VERY dangerous to run an external script like the one
@@ -197,7 +199,12 @@ Something good about security.
 
 ## Setup Mongo
 
-Change `/etc/mongod.conf` line 6 or `bind_ip = 127.0.0.1` to `bind_ip = 0.0.0.0`.
+If you want to allow external access, then change `/etc/mongod.conf` line 6 or
+`bind_ip = 127.0.0.1` to `bind_ip = 0.0.0.0`.
+
+If you want to enable authentication (recommended), then you need to add a root
+user to the admin database, then uncomment the `auth=true` line in
+`/etc/mongo.conf`.
 
 ## Add user (with sudo access)
 
@@ -217,23 +224,7 @@ Redis does not need any special setup.
 
 ## Deploying Node Applications with Systemd and Nginx
 
-Digital Ocean has a great guide on deployinig Node applications on their droplets:
-<https://www.digitalocean.com/community/tutorials/how-to-deploy-node-js-applications-using-systemd-and-nginx>
+See [Deploying Node With Nginx](deplying-node-with-nginx.md).
 
-### Sample systemd unit file:
-
-```
-[Service]
-ExecStart=/usr/bin/node /home/ams/ams/server/server.js
-WorkingDirectory=/home/ams/ams
-Restart=always
-StandardOutput=syslog
-StandardError=syslog
-SyslogIdentifier=ams
-User=ams
-Group=ams
-Environment=NODE_ENV=production PWD=/home/ams/ams
-
-[Install]
-WantedBy=multi-user.target
-```
+Digital Ocean also has a great guide on deployinig Node applications on their droplets at 
+<https://www.digitalocean.com/community/tutorials/how-to-deploy-node-js-applications-using-systemd-and-nginx>.
