@@ -182,13 +182,23 @@ When the script is done, simply
 
 ## Setup Firewall & SSH
 
-Something good about security.
+```
+# systemctl start firewalld
+```
+
+### Open ports for Nginx
+
+```
+# firewall-cmd --add-port=80/tcp --permanent
+# firewall-cmd --add-port=443/tcp --permanent
+# systemctl restart firewalld
+```
 
 ### Open port for Mongo
 
 ```
 # firewall-cmd --add-port=27017/tcp --permanent
-# systemctl restart mongod
+# systemctl restart firewalld
 ```
 
 ## Setup Mongo
