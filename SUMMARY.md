@@ -1,5 +1,5 @@
 + [CSS](css.md)
-+ [Deploy Node Nginx](deploy-node-nginx.md)
++ [Deploying Node With Nginx](deploying-node-with-nginx.md)
 + [Digital Ocean](digital-ocean.md)
 + [Duckduckgo](duckduckgo.md)
 + [Facebook](facebook.md)
