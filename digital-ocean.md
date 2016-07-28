@@ -210,13 +210,6 @@ If you want to enable authentication (recommended), then you need to add a root
 user to the admin database, then uncomment the `auth=true` line in
 `/etc/mongo.conf`.
 
-## Add user (with sudo access)
-
-```
-# useradd poopr -m -g users -G wheel
-# passwd poopr
-```
-
 ## Setup Redis
 
 Redis does not need any special setup.
@@ -224,6 +217,23 @@ Redis does not need any special setup.
 ```
 # systemctl start redis
 # systemctl start redis
+```
+
+## Add user (with sudo access)
+
+```
+# useradd poopr -m -g users -G wheel
+# passwd poopr
+```
+
+### Send SSH Keys
+
+If you don't want to type the password in everytime you login
+to the droplet (do this on your own computer, NOT the server).
+
+```
+$ ssh-keygen
+$ ssh-copy-id poopr@13.37.13.37
 ```
 
 ## Deploying Node Applications with Systemd and Nginx
