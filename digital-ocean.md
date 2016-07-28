@@ -180,12 +180,6 @@ When the script is done, simply
 # yum install nodejs
 ```
 
-## Install global Node modules
-
-```
-# npm install -g thecodebureau/tcb-gulp nodemon
-```
-
 ## Setup Firewall & SSH
 
 Something good about security.
