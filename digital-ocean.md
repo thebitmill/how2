@@ -177,7 +177,7 @@ above as root.  Only do this from trusted sources!
 When the script is done, simply
 
 ```
-# yum install nodej
+# yum install nodejs
 ```
 
 ## Install global Node modules
