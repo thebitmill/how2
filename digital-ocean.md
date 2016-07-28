@@ -224,7 +224,7 @@ Redis does not need any special setup.
 
 ## Deploying Node Applications with Systemd and Nginx
 
-See [Deploying Node With Nginx](deplying-node-with-nginx.md).
+See [Deploying Node With Nginx](deploying-node-with-nginx.md).
 
 Digital Ocean also has a great guide on deployinig Node applications on their droplets at 
 <https://www.digitalocean.com/community/tutorials/how-to-deploy-node-js-applications-using-systemd-and-nginx>.
