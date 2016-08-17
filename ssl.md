@@ -4,15 +4,14 @@ You can follow this <https://www.digitalocean.com/community/tutorials/how-to-sec
 
 Or TL;DR
 
-1. `# git clone https://github.com/letsencrypt/letsencrypt /opt/letsencrypt`
-2. `cd /opt/letsencrypt`
-3.  ```
+1. `# yum install certbot` | `# pacman -S certbot` | `# apt-get install letsencrypt`
+2.  ```
 location /.well-known {
 	allow all;
 	root /usr/share/nginx/html;
 }
 ```
-4. ./letsencrypt-auto certonly -a webroot --webroot-path=/usr/share/nginx/html -d domain.io -d www.domain.io
+4. certbot --email email@example.com certonly -a webroot --webroot-path=/usr/share/nginx/html -d domain.io -d www.domain.io
 5. ```
 server {
 	listen 80; 
