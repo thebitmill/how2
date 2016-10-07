@@ -27,6 +27,6 @@
   + [sed](shell/sed.md)
   + [ZSH](shell/zsh.md)
 + [Vim](vim/README.md)
-+ [Web Dev](web-dev/README.md)	
-	+ [Browser Inconsistencies](web-dev/browser-inconsistencies.md)
++ [Web Dev](web-dev/README.md)
+  + [Browser Inconsistencies](web-dev/browser-inconsistencies.md)
   + [Facebook](web-dev/facebook.md)
