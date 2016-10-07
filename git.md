@@ -64,8 +64,25 @@ Source: <http://stackoverflow.com/a/454750/4273291>
 $ git show COMMIT:./filename
 ```
 
+## Checkout remote branch
+
+```
+$ git checkout -b experimental origin/experimental
+```
+
 ## List commits for a specific file
 
 ```
 $ git log --follow filename
 ```
+
+## Merging detached HEAD back into branch
+
+Well, you arent actually mergin anything. You just need
+to point master to the detached HEAD commit.
+
+```
+$ git branch -f master HEAD && git checkout master
+```
+
+Source: <http://stackoverflow.com/a/5772882>
