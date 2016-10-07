@@ -106,7 +106,7 @@ http {
 
 Example sites (place it in `/etc/nginx/sites-available`, and then create a symlink to it in `/etc/nginx/sites-enabled`)
 
-```
+```nginx
 server {
     listen 80; 
     server_name  example.com www.example.com;
@@ -152,14 +152,15 @@ server {
 Example `/etc/systemd/system/example.service`:
 
 ```
-ExecStart=/usr/bin/node ${PWD}/server/server.js
-WorkingDirectory=/home/carson/carson
+[Service]
+ExecStart=/usr/bin/node server/server.js
+WorkingDirectory=/home/bitmill/bitmill
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
-SyslogIdentifier=carson
-User=carson
-Group=carson
+SyslogIdentifier=bitmill
+User=bitmill
+Group=bitmill
 Environment=NODE_ENV=production
 
 [Install]
