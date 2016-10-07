@@ -216,7 +216,7 @@ Redis does not need any special setup.
 
 ```
 # systemctl start redis
-# systemctl start redis
+# systemctl enable redis
 ```
 
 ## Add user (with sudo access)
