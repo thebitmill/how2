@@ -112,3 +112,11 @@ Note, you can usually use gawk, awk nor nawk.
 ```
 $ history | awk '{print $2}' | awk 'BEGIN {FS="|"}{print $1}' | sort | uniq -c | sort -n | tail | sort -nr
 ```
+
+## Remove Line From Huge File
+
+```
+$ tail -n+STARTLINE | head -nANTALRADER
+```
+
+\+ ska vara med
