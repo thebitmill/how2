@@ -6,7 +6,7 @@
   * [Raster](graphics/raster.md)
   * [SVG](graphics/svg.md)
 - [Linux](linux/README.md)
-  * [Digital Ocean](linux/digital-ocean.md)
+  * [VPS](linux/vps.md)
   * [Pacman](linux/pacman.md)
   * [Rpm](linux/rpm.md)
   * [X](linux/x.md)

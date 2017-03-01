@@ -162,13 +162,13 @@ repos to install them. More information can be found at
 <https://github.com/nodesource/distributions>.
 
 ```
-# curl -sL https://rpm.nodesource.com/setup_6.x | bash -
+# curl -sL https://rpm.nodesource.com/setup_7.x | bash -
 ```
 
 or if you are wimp and want to play it safe:
 
 ```
-# curl -sL https://rpm.nodesource.com/setup_4.x | bash -
+# curl -sL https://rpm.nodesource.com/setup_6.x | bash -
 ```
 
 CAUTION: In general it is VERY dangerous to run an external script like the one
