@@ -33,7 +33,7 @@ Piping to xargs instead of -exec if you need more control, but is often OP.
 $ find . -name "*.txt" | xargs -0 sed -i '' -e 's/windows/linux/g'
 ```
 
-If you more effecient, and only search in files with the string, use grep and pipe to xargs
+If prefer efficiancy, and only replace in files with containing string, use grep and pipe to xargs
 
 ```
 $ grep -rl 'windows' | xargs sed -i 's/windows/linux/g'

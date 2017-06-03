@@ -1,5 +1,7 @@
 # Raster
 
+## PNG
+
 ```
 pngquant --quality 60-80 -f products-new-0*.png
 ```

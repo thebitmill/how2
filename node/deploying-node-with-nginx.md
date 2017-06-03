@@ -117,6 +117,9 @@ server {
     listen       443 ssl;
     server_name  example.com www.example.com;
 
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+
     root /home/example/example/public;
     index index.html;
 
@@ -137,7 +140,7 @@ server {
         proxy_http_version  1.1;
         #proxy_cache    one;
         #proxy_cache_key    sfs$request_uri$scheme;
-        proxy_pass  http://example;
+        proxy_pass  http://127.0.01:1337;
     }
 
     #======Do not serve files starting with . or $=======
