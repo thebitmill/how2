@@ -68,3 +68,9 @@ pg\_dump options
 
 pg\_restore options
 \-F: format (c: The archive is in the custom format of pg\_dump.)
+
+
+
+## types
+
+timestamptz is shorthand for timestamp without time zone
