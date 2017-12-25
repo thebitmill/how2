@@ -1,10 +1,45 @@
 # GIT
 
+## Checkout previously checked out branch
+
+```
+$ git checkout -
+```
+
+which is a shortcuts for
+
+```
+$ git checkout @{-1}
+```
+
+<https://stackoverflow.com/a/7207542>
+
 ## Remove a remote tag
 
 ```
 $ git tag -d 12345
 $ git push origin :refs/tags/12345
+```
+
+## Remove all local tags
+
+(make sure to remove all remote tags before calling this command if you intend to
+remove both remote and local)
+```
+$ git tag | xargs git tag -d
+```
+To delete remote tags (before deleting local tags) simply do:
+
+## Remove all remote tags
+
+```
+$ git tag -l | xargs -n 1 git push --delete origin
+```
+
+faster:
+
+```
+$ git tag | xargs -L 1 | xargs git push origin --delete
 ```
 
 ## Remove a remote branch
@@ -58,6 +93,26 @@ Source: <http://stackoverflow.com/a/454750/4273291>
 7. `$ git add filename`
 8. `$ git rebase --continue`
 
+## Diff
+
+
+Latest 
+```
+$ git diff HEAD^ HEAD
+```
+
+or
+
+```
+$ git diff HEAD^!
+```
+
+Current branch, diff between commits 2 and 3 times back
+
+```
+$ git diff HEAD~3 HEAD~2
+```
+
 ## Output a version of a file
 
 ```
@@ -86,3 +141,12 @@ $ git branch -f master HEAD && git checkout master
 ```
 
 Source: <http://stackoverflow.com/a/5772882>
+
+
+## List all tracked files
+
+```
+$ git ls-tree -r master --name-only
+```
+
+Source: <https://stackoverflow.com/a/15606995>
