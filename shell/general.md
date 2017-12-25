@@ -1,6 +1,20 @@
 # Shell
 
-Commands
+## List
+
+Print file tree, including size and modified date
+
+`$ tree -DhL 2`
+
+```
+-d only directories
+-D output last modified date
+-h output size (kb)
+-L X only descend X levels
+```
+
+
+## Commands
 
 Recursively search all files in a folder for a pattern with 'grep'
 
