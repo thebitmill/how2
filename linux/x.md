@@ -3,6 +3,8 @@
 
 <https://radu.cotescu.com/remapping-keys-in-ubuntu-14.04/>
 
+`/usr/share/X11/xkb/symbols/pc`
+
 Find `<MENU>`, change the right from `Menu` to `Hyper_R` 
 
 Change
