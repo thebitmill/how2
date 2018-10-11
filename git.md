@@ -150,3 +150,91 @@ $ git ls-tree -r master --name-only
 ```
 
 Source: <https://stackoverflow.com/a/15606995>
+
+## Squash commits
+
+Squash and write commit message from scratch:
+
+```sh
+$ git reset --soft HEAD~3 && git commit
+```
+
+If you want to start editing the new commit message with a concatenation of the existing commit messages (i.e. similar to what a pick/squash/squash/…/squash git
+rebase -i instruction list would start you with), then you need to extract those messages and pass them to git commit:
+
+```sh
+$ git reset --soft HEAD~3 && git commit --edit -m"$(git log --format=%B --reverse HEAD..HEAD@{1})"
+```
+
+Source: <https://stackoverflow.com/a/5201642/4273291>
+
+Also possible to do via interactive rebase:
+
+```sh
+git rebase -i <after-this-commit>
+```
+
+Source: <https://stackoverflow.com/a/5189600/4273291>
+
+Also..
+
+```
+# Reset the current branch to the commit just before the last 12:
+git reset --hard HEAD~12
+
+# HEAD@{1} is where the branch was just before the previous command.
+# This command sets the state of the index to be as it would just
+# after a merge from that commit:
+git merge --squash HEAD@{1}
+
+# Commit those squashed changes.  The commit message will be helpfully
+# prepopulated with the commit messages of all the squashed commits:
+git commit
+```
+
+Source: <https://stackoverflow.com/a/5190324/4273291>
+
+## Remove untracked files
+
+Show what will be deleted:
+
+```
+$ git clean -n
+```
+
+To actually remove (if `clean.requireForce` is set, which it is by default)
+
+
+```
+$ git clean -f
+```
+
+Remove directories as well
+
+```
+$ git clean -fd
+```
+
+## Cherry pick multiple
+
+From A to B (including A)
+
+```
+$ git cherry-pick A^..B
+```
+
+## Commit count
+
+```
+$ git rev-list --count HEAD
+```
+
+```
+$ git rev-list --count COMMIT
+```
+
+## Number of commits per author
+
+```
+$ git shortlog -s -n --all --no-merges
+```
