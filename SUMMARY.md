@@ -23,6 +23,7 @@
   * [Compress](shell/compress.md)
   * [Fs](shell/fs.md)
   * [General](shell/general.md)
+  * [Generate Passwords](shell/generate-passwords.md)
   * [Image](shell/image.md)
   * [Internet](shell/internet.md)
   * [Ranger](shell/ranger.md)
