@@ -1,6 +1,21 @@
 # Pacman
 
-If you get errors like
+## Find package owning file
+
+Local:
+
+```
+$ pacman -Qo /usr/bin/which
+```
+
+Remote
+
+```
+# pacman -Fy
+$ pacman -Fo /usr/bin/which
+```
+
+## If you get errors like
 
 ```
 error: krb5: signature from "Levente Polyak (anthraxx) <levente@leventepolyak.net>" is unknown trust
