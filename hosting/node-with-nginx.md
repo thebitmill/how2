@@ -1,4 +1,4 @@
-# Deploying Node With Nginx
+# Node With Nginx
 
 First you need a server or a VPS (Virtual Private Server).
 Follow the [Digital Ocean how2](linux/digital-ocean.md) if you are
