@@ -3,12 +3,12 @@
 ## Installation
 
 1. Find correct yum repo (right click and save link address) from https://yum.postgresql.org/repopackages.php
-2. Install it, eg `# yum install https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm`
+2. Install it, eg `# yum install https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-redhat10-10-2.noarch.rpm`
 3. `# yum list postgres*`
-4. `# yum install postgresql96-server`
-3. `# /usr/pgsql-9.6/bin/postgresql96-setup initdb`
-4. `# systemctl start postgresql-9.6`
-5. `# systemctl enable postgresql-9.6`
+4. `# yum install postgresql10-server`
+3. `# /usr/pgsql-10/bin/postgresql-10-setup initdb`
+4. `# systemctl start postgresql-10`
+5. `# systemctl enable postgresql-10`
 
 ## Enable Login with password instead of relying on Unix username
 
@@ -16,10 +16,9 @@
 2. `$ psql`
 3. `\password`
 4. `\q`
-5. `# vi /var/lib/pgsql/9.6/data/pg_hba.conf` and switch all ident/peer to md5
-6. `# systemctl restart postgresql-9.6 `
-7. Add `host    all             all             all                     md5` if you want to allow remote connections with password
-
+5. `# vi /var/lib/pgsql/10/data/pg_hba.conf` and switch all ident/peer to md5
+6. `# systemctl restart postgresql-10`
+7. Add `host  all  all  all  md5` if you want to allow remote connections with password
 
 ## Setup new User & Database
 
@@ -27,9 +26,9 @@
 2. `$ psql`
 3. execute `CREATE USER user_name ENCRYPTED PASSWORD 'password';`
 4. execute `CREATE DATABASE db_name OWNER user_name;`
+5. If you want to edit the new database as the new user, run `\c db_name user_name`.
 
 NOTE: difference between `CREATE USER` and `CREATE ROLE` is that with CU `LOGIN` is assumed by default.
-
 
 ## Dump Table Structure (no data)
 
