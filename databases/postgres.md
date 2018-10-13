@@ -10,6 +10,29 @@
 4. `# systemctl start postgresql-10`
 5. `# systemctl enable postgresql-10`
 
+### Firwall: UFW
+
+Allow access from all remotes:
+
+```
+# ufw allow from any to any port 5432
+```
+
+Allow access from specific ip:
+
+```
+# ufw allow from 15.15.15.0/24 to any port 5432
+```
+
+### Firewall: firewalld
+
+Allow access from all remotes:
+
+```
+# firewall-cmd --add-port=5432/tcp --permanent
+# systemctl restart firewalld
+```
+
 ## Enable Login with password instead of relying on Unix username
 
 1. `# su postgres`
@@ -33,7 +56,7 @@ NOTE: difference between `CREATE USER` and `CREATE ROLE` is that with CU `LOGIN`
 ## Dump Table Structure (no data)
 
 ```
-$ pg_dump -h postgres.example.io -p 6543 -d poopr -U poopr_supreme -t regions -s -O > dump.sql
+$ pg_dump -h postgres.example.io -p 1337 -d poopr -U poopr_supreme -t regions -s -O > dump.sql
 ```
 
 \-h: host

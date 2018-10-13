@@ -1,81 +1,36 @@
 # Setting Up a CentOS Droplet
 
-`#` means to execute commands as root.
+## Grow or create swapfile
 
-## Register
+Coming soon...
 
-First you need to register an account at Digital Ocean. If you register using
-our referal link (<https://www.digitalocean.com/?refcode=a3eb2e3ed7ce>) you get
-$10 for free. If you activate your Github Student Developer Pack
-(<https://education.github.com/pack>), you get an additional $50.
-
-## Create a Droplet
-
-We have decided to use CentOS for all our production environments. In order to
-get familiar with the Fedora-based Linux distributions, we recommend using
-Fedora or CentOS on your droplets. All guides relating to servers and droplets
-will most likely be Fedora/CentOS specific.
-
-The smallest droplet is sufficient for most purposes.
-
-## Setup Swapfile
-
-You probably have the smallest droplet on digital ocean, which has 512mb RAM.
-For reasons unknown, this quickly becomes too litte and yum and npm have a
-tendency to start failing. There for it is highly recommended to create a
-swapfile and enable the virtual memory.
-
-A general rule of thumb is twice as much swap space as you have RAM. Run
-
-```
-# fallocate -l 1G /swapfile
-```
-
-or
-
-```
-# dd if=/dev/zero of=/swapfile bs=1024k count=1000
-```
-
-Set the permissions:
-
-```
-# chmod 600 /swapfile
-```
-
-Then run the following to initialize the swap filesystem, and activate it
-
-```
-# mkswap /swapfile
-# swapon /swapfile
-```
-
-To get status of your memory, run
-
-```
-$ free
-```
-
-To enable the new swapfile on boot, add the following line to /etc/fstab
-
-```
-/swapfile   swap    swap    sw  0   0
-```
-
-or run
-
-```
-# echo "/swapfile   swap    swap    sw  0   0" >> /etc/fstab
-```
-
-If you do not know your root password, but have sudo access, run the following instead of the above command
-
-```
-$ sudo su -c 'echo "/swapfile   swap    swap    sw  0   0" >> /etc/fstab'
-```
+A general rule of thumb is twice as much swap space as you have RAM.
 
 For a more thorough guide to Virtual Memory, see
 <https://www.digitalocean.com/community/tutorials/how-to-configure-virtual-memory-swap-file-on-a-vps>
+
+## Update system
+
+```
+# yum update
+```
+
+## Set timezone
+
+We currently set the timezone for the server depending on where the market
+for the delivered services are, not where the servers are. And for some
+reason we always use Copenhagen instead of Stockholm.
+
+```
+# timedatectl set-timezone Europe/Stockholm
+```
+
+Sync clock with internet time:
+
+```
+# yum install -y ntp
+# timedatectl set-ntp true
+```
 
 ## EPEL
 
@@ -89,57 +44,86 @@ conflict with or replace packages in the base Enterprise Linux distributions.
 EPEL uses much of the same infrastructure as Fedora, including buildsystem,
 bugzilla instance, updates manager, mirror manager and more.
 
-### Yum install
-
 In CentOS, EPEL is available as a package from the official repositories. Simply run:
 
 ```
-# yum install epel-release
+# yum install -y epel-release
 ```
 
-### Manual Install
+## Setup Firewall
 
-If you wanna be crazy cool, you can install EPEL in the good old fashion manual
-way. First head to
-http://ftp.lysator.liu.se/pub/epel/7/x86_64/repoview/epel-release.html and copy
-the url from the link to the latest package. Download the package to your
-droplet with wget:
+Remove firewalld:
 
 ```
-$ wget http://ftp.lysator.liu.se/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
+# systemctl stop firewalld
+# yum remove -y firewalld
 ```
 
-In the same directory, run
+Install [ufw](https://wiki.archlinux.org/index.php/Uncomplicated_Firewall)
 
 ```
-# rpm -ivh epel-release-7-5.noarch.rpm
+# yum install -y ufw
 ```
 
-## Install RPM packages
-
-(gcc gcc-c++ is to be able to install node from nodesource repos)
+Setup basic rules
 
 ```
-# yum install git vim redis ntp nginx mongodb mongodb-server tmux gcc gcc-c++
+# ufw default deny
+# ufw limit SSH
 ```
 
-## Set timezone
-
-We currently set the timezone for the server depending on where the market
-for the delivered services are, not where the servers are. And for some
-reason we always use Copenhagen instead of Stockholm.
+Enable rules
 
 ```
-# ln -fs /usr/share/zoneinfo/Europe/Copenhagen /etc/localtime
+# ufw enable
 ```
 
-(-f flag removes existing, if any, symlink)
-
-And start NTP (to keep clocks insync)
+## Install Some goodies
 
 ```
-# systemctl start ntpd
-# systemctl enable ntpd
+# yum install -y tmux vim git wget zsh
+```
+
+## Create a user
+
+```
+# useradd -m -s /bin/zsh -g users -G wheel foo
+# passwd foo
+```
+
+On your local machine:
+
+If you dont have an ssh key yet, run
+
+```
+$ ssh-keygen
+```
+
+Copy pubkey to vps:
+
+```
+$ ssh-copy-id foo@url
+```
+
+## Secure SSH
+
+```
+# vim /etc/ssh/sshd_config
+```
+
+Ensure these settings are set:
+
+```
+PermitRootLogin no
+PubkeyAuthentication yes
+PasswordAuthentication no
+```
+
+Make sure you can login with your user using pubkey before restarting the sshd
+daemon!
+
+```
+# systemctl restart sshd
 ```
 
 ## Install Ranger
@@ -162,55 +146,42 @@ repos to install them. More information can be found at
 <https://github.com/nodesource/distributions>.
 
 ```
-# curl -sL https://rpm.nodesource.com/setup_7.x | bash -
+# curl -sL https://rpm.nodesource.com/setup_10.x | bash -
 ```
 
 or if you are wimp and want to play it safe:
 
 ```
-# curl -sL https://rpm.nodesource.com/setup_6.x | bash -
+# curl -sL https://rpm.nodesource.com/setup_8.x | bash -
 ```
 
 CAUTION: In general it is VERY dangerous to run an external script like the one
-above as root.  Only do this from trusted sources!
+above as root. Only do this from trusted sources!
 
 When the script is done, simply
 
 ```
-# yum install nodejs
+# yum install -y nodejs
 ```
 
-## Setup Firewall & SSH
+# Setup Databases
+
+## Setup Postgres
+
+See first sections of [the postgres section](databases/postgres) for
+installation and setup.
+
+Open firewall ports if you want to allow remote connections
 
 ```
-# systemctl start firewalld
+# ufw allow 
 ```
 
-### Open ports for Nginx
+### Setup Redis
 
 ```
-# firewall-cmd --add-port=80/tcp --permanent
-# firewall-cmd --add-port=443/tcp --permanent
-# systemctl restart firewalld
+# yum install -y redis
 ```
-
-### Open port for Mongo
-
-```
-# firewall-cmd --add-port=27017/tcp --permanent
-# systemctl restart firewalld
-```
-
-## Setup Mongo
-
-If you want to allow external access, then change `/etc/mongod.conf` line 6 or
-`bind_ip = 127.0.0.1` to `bind_ip = 0.0.0.0`.
-
-If you want to enable authentication (recommended), then you need to add a root
-user to the admin database, then uncomment the `auth=true` line in
-`/etc/mongo.conf`.
-
-## Setup Redis
 
 Redis does not need any special setup.
 
@@ -238,7 +209,7 @@ $ ssh-copy-id poopr@13.37.13.37
 
 ## Deploying Node Applications with Systemd and Nginx
 
-See [Deploying Node With Nginx](deploying-node-with-nginx.md).
+See [Node With Nginx](node-with-nginx.md).
 
 Digital Ocean also has a great guide on deployinig Node applications on their droplets at 
 <https://www.digitalocean.com/community/tutorials/how-to-deploy-node-js-applications-using-systemd-and-nginx>.
