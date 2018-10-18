@@ -91,7 +91,27 @@ pg\_dump options
 pg\_restore options
 \-F: format (c: The archive is in the custom format of pg\_dump.)
 
+## Copy All Databases between servers
 
+if you dont have to enter a password for the source server, this works well:
+
+```
+$ pg_dumpall -h db.bitmill.io | psql
+```
+
+otherwise:
+
+```
+$ pg_dumpall > dump_file
+$ scp dump_file user@server:~/
+$ psql -f dump_file
+```
+
+## Reset sequence
+
+```
+ALTER SEQUENCE seq RESTART WITH 1;
+```
 
 ## types
 
