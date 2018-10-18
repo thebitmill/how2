@@ -168,7 +168,7 @@ When the script is done, simply
 
 ## Setup Postgres
 
-See first sections of [the postgres section](databases/postgres) for
+See first sections of [the postgres section](../databases/postgres.html) for
 installation and setup.
 
 Open firewall ports if you want to allow remote connections
@@ -209,7 +209,7 @@ $ ssh-copy-id poopr@13.37.13.37
 
 ## Deploying Node Applications with Systemd and Nginx
 
-See [Node With Nginx](node-with-nginx.md).
+See [Node With Nginx](node-with-nginx.html).
 
 Digital Ocean also has a great guide on deployinig Node applications on their droplets at 
 <https://www.digitalocean.com/community/tutorials/how-to-deploy-node-js-applications-using-systemd-and-nginx>.
