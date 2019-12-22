@@ -8,6 +8,7 @@
   * [Node With Nginx](hosting/node-with-nginx.md)
 - [Linux](linux/README.md)
   * [Pacman](linux/pacman.md)
+  * [Raid](linux/raid.md)
   * [Rpm](linux/rpm.md)
   * [X](linux/x.md)
 - [Node](node/README.md)
