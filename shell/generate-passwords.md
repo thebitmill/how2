@@ -22,6 +22,10 @@ $ head /dev/urandom | tr -dc '[:graph:]' | fold -w16 | sed '$d' | shuf -n1
 or maybe (piping all above commands to wc gives 17, this below will give 16 characters)
 
 ```
-$ cat /dev/urandom | tr -dc A-Za-z0-9 | head -c16
+$ cat /dev/urandom | tr -dc [:alnum:] | head -c16
+```
+
+```
+$ cat /dev/urandom | tr -dc [:punct:][:alnum:] | head -c16
 ```
 
