@@ -7,6 +7,7 @@
   * [Vps](hosting/vps.md)
   * [Node With Nginx](hosting/node-with-nginx.md)
 - [Linux](linux/README.md)
+  * [General](linux/general.md)
   * [Pacman](linux/pacman.md)
   * [Raid](linux/raid.md)
   * [Rpm](linux/rpm.md)
