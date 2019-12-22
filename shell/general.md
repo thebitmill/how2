@@ -134,3 +134,9 @@ $ tail -n+STARTLINE | head -nANTALRADER
 ```
 
 \+ ska vara med
+
+## Rescan for audio devices PulseAudio
+
+```
+$ pacmd unload-module module-udev-detect && pacmd load-module module-udev-detect
+```
