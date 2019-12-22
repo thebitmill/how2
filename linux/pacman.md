@@ -25,3 +25,8 @@ error: krb5: signature from "Levente Polyak (anthraxx) <levente@leventepolyak.ne
 ```
 # pacman -Sy archlinux-keyring
 ```
+
+
+## Restore all packages to a specific date
+
+<https://wiki.archlinux.org/index.php/Arch_Linux_Archive#How_to_restore_all_packages_to_a_specific_date>
