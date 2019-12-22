@@ -27,6 +27,7 @@
   * [Ranger](shell/ranger.md)
   * [Sed](shell/sed.md)
   * [SSH](shell/ssh.md)
+  * [System](shell/system.md)
   * [Top](shell/top.md)
   * [Zsh](shell/zsh.md)
 - [Vim](vim/README.md)
