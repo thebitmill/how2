@@ -238,3 +238,17 @@ $ git rev-list --count COMMIT
 ```
 $ git shortlog -s -n --all --no-merges
 ```
+
+## Push all local branches
+
+```
+$ git push --all origin
+```
+
+## Push all branches from one remote to another
+
+Source: <https://stackoverflow.com/a/21133502/4273291>
+
+```
+$ git push gitlab 'refs/remotes/origin/*:refs/heads/*'
+```
