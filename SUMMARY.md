@@ -24,6 +24,7 @@
   * [Internet](shell/internet.md)
   * [Ranger](shell/ranger.md)
   * [Sed](shell/sed.md)
+  * [SSH](shell/ssh.md)
   * [Top](shell/top.md)
   * [Zsh](shell/zsh.md)
 - [Vim](vim/README.md)
