@@ -53,6 +53,18 @@ Allow access from all remotes:
 
 NOTE: difference between `CREATE USER` and `CREATE ROLE` is that with CU `LOGIN` is assumed by default.
 
+## Change user credentials
+
+From <https://stackoverflow.com/a/12721095>
+
+1. Login in as postgres user
+2. `ALTER USER user_name WITH PASSWORD 'new_password';`
+3. Delete psql history `$ rm ~/.psql_history`
+
+Rename user:
+
+`ALTER USER myuser RENAME TO newname;`
+
 ## Dump Table Structure (no data)
 
 ```
