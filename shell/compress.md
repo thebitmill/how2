@@ -1,5 +1,11 @@
 # Compress
 
+## Tar
+
+```
+$ tar -cvzf output.tar.gz source/
+```
+
 ## Zip
 
 `.zip` is implied if omitted.
