@@ -25,6 +25,7 @@
   * [Image](shell/image.md)
   * [Internet](shell/internet.md)
   * [Ranger](shell/ranger.md)
+  * [Rsync](shell/rsync.md)
   * [Sed](shell/sed.md)
   * [SSH](shell/ssh.md)
   * [System](shell/system.md)
