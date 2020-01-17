@@ -252,3 +252,14 @@ Source: <https://stackoverflow.com/a/21133502/4273291>
 ```
 $ git push gitlab 'refs/remotes/origin/*:refs/heads/*'
 ```
+
+## Multiple commits patch
+
+```sh
+git format-patch COMMIT_1^..COMMIT_2 --stdout > foo.patch
+```
+
+From other git dir
+```sh
+git --git-dir=../dir format-patch COMMIT_1^..COMMIT_2 --stdout > foo.patch
+```
