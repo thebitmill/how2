@@ -263,3 +263,26 @@ From other git dir
 ```sh
 git --git-dir=../dir format-patch COMMIT_1^..COMMIT_2 --stdout > foo.patch
 ```
+
+## Remove merged/deleted branches
+
+Source: <https://stackoverflow.com/a/28464339>
+
+Prune tracking branches not on the remote.
+
+```sh
+$ git remote prune origin
+```
+
+Lists branches that have been merged into the current branch (including itself)
+
+```sh
+$ git branch --merged
+```
+
+To give yourself the opportunity to edit the list before deleting branches, you could do the following in one line:
+
+```sh
+$ git branch --merged >/tmp/merged-branches && \
+  vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches
+```
