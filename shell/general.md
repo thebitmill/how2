@@ -64,6 +64,14 @@ $ grep -rl 'console.log' | xargs sed -i '/console.log/d'
 Change extension of files:
 
 ```
+$ for file in **/*.txt; do mv $file ${file%js}ts; done
+```
+
+```
+$ for file in **/*.js{,x}; do mv $file ${file/.js/.ts}; done
+```
+
+```
 $ find . -name '*.md' -exec rename .md .txt {} +
 ```
 
