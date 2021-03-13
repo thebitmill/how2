@@ -3,12 +3,13 @@
 ## Installation
 
 1. Find correct yum repo (right click and save link address) from https://yum.postgresql.org/repopackages.php
-2. Install it, eg `# yum install https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-redhat10-10-2.noarch.rpm`
-3. `# yum list postgres*`
-4. `# yum install postgresql10-server`
-3. `# /usr/pgsql-10/bin/postgresql-10-setup initdb`
-4. `# systemctl start postgresql-10`
-5. `# systemctl enable postgresql-10`
+2. Install it, eg `# dnf install https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm`
+3. Disable built-in PostgreSQL module: `# dnf -qy module disable postgresql`
+3. `# dnf list postgres*`
+4. `# dnf -y install postgresql12 postgresql12-server`
+3. `# /usr/pgsql-12/bin/postgresql-12-setup initdb`
+4. `# systemctl start postgresql-12`
+5. `# systemctl enable postgresql-12`
 
 ### Firwall: UFW
 
