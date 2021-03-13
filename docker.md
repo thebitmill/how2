@@ -7,7 +7,7 @@ $ docker-compose up -d --no-deps --build <service_name>
 ## Remove everything
 
 ```
-$ docker-compose system prune -a --volumes
+$ docker system prune -a --volumes
 ```
 
 ## Remove more specific stuff
