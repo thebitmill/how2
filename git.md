@@ -82,6 +82,21 @@ git filter-branch --env-filter \
 
 Source: <http://stackoverflow.com/a/454750/4273291>
 
+## Change author
+
+```
+git filter-branch -f --env-filter "
+    GIT_AUTHOR_NAME='Newname'
+    GIT_AUTHOR_EMAIL='new@email'
+    GIT_COMMITTER_NAME='Newname'
+    GIT_COMMITTER_EMAIL='new@email'
+  " HEAD
+```
+
+Source: <https://stackoverflow.com/a/870367>
+
+Also see <https://stackoverflow.com/a/750182> from same thread (more complex with some conditionals)
+
 ## Add an earlier version of a file in a earlier commit
 
 1. `$ git rebase -i COMMIT`
@@ -210,9 +225,9 @@ $ git clean -f
 ```
 
 Remove directories as well
+$ git clean -fd
 
 ```
-$ git clean -fd
 ```
 
 ## Cherry pick multiple
@@ -285,4 +300,36 @@ To give yourself the opportunity to edit the list before deleting branches, you 
 ```sh
 $ git branch --merged >/tmp/merged-branches && \
   vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches
+```
+
+## Rewriting messages
+
+Prepend;
+
+```
+$ git filter-branch --msg-filter 'echo "common: $(cat)"'
+```
+
+Prepend, removing all lines but the first:
+
+```
+$ git filter-branch --msg-filter 'echo "ca-api: $(head -n 1)"' -f
+```
+
+Prepend only to non-merges:
+
+```
+$ git filter-branch --msg-filter '{ tmp=$(cat); if [[ $tmp = Merge* ]]; then echo "$tmp"; else echo "frontend: $(echo $tmp | head -n 1)"; fi }'
+```
+
+## Move all files into sub dir
+
+```
+$ git filter-branch --tree-filter "mkdir -p frontend; mv * .* frontend/ || true"
+```
+
+## Remove sub directory
+
+```
+$ git filter-branch --tree-filter 'rm -rf vendor/gems' HEAD
 ```
