@@ -22,6 +22,12 @@ Image magick and graphics magick do pretty much the same thing.
 $ convert -density 150 input.pdf -quality 90 output.png
 ```
 
+### Convert PNG to JPEG
+
+```
+$ convert ubuntuhandbook.png -quality 90 ubuntuhandbook.jpg
+```
+
 ## SVG
 
 
