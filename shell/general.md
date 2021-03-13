@@ -148,3 +148,9 @@ $ tail -n+STARTLINE | head -nANTALRADER
 ```
 $ pacmd unload-module module-udev-detect && pacmd load-module module-udev-detect
 ```
+
+## Scan for Files Changed Last Minute
+
+```
+$ find ~/ -mmin -1 -type f
+```
